@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Button } from 'react-native';
 // import { colors } from 'react-native-elements';
 
 import styles from "./Styling.style.js";
@@ -12,9 +12,12 @@ import {
 
 import { Speech } from "expo";
 
+import PubSub from "pubsub-js";
+
 class PerGarageInfo extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
 
@@ -36,6 +39,11 @@ class PerGarageInfo extends React.Component {
     sendColor() {
         console.log("Color Sent");
         this.props.sendColor(this.getColor(this.props.spotsNum / this.props.garageMax * 100))
+    }
+
+
+    shouldComponentUpdate(){
+
     }
 
     render() {
@@ -78,6 +86,14 @@ class PerGarageInfo extends React.Component {
                             {Math.floor((this.props.spotsNum / this.props.garageMax * 100))}%
                         </Text>
                     </View>
+                    <Button
+                          style={styles.perGarageInfo.button}
+                          // onPress={this.onPress}
+                          title ='Start Navigation'
+                          color ="blue"
+                      />
+
+
                 </View>
             </View>
         )
